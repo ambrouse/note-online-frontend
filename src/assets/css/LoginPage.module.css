@@ -1,0 +1,223 @@
+body {
+  font-size: 18px;
+}
+
+@media (max-width: 2159px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1440px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media (max-width: 1040px) {
+  body {
+    font-size: 12px;
+  }
+}
+@media (max-width: 900px) {
+  body {
+    font-size: 10px;
+  }
+}
+.login {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.login .login__background {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+}
+.login .login__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.login .login__form {
+  position: absolute;
+  width: 30%;
+  height: 80%;
+  background-color: rgba(25, 26, 53, 0.877);
+  left: 50%;
+  top: 50%;
+  max-width: 600px;
+  max-height: 800px;
+  transform: translate(-50%, -50%);
+  border-radius: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+}
+@media (max-width: 768px) {
+  .login .login__form {
+    width: 70%;
+    height: 50%;
+  }
+}
+.login .login__form .loginTitle {
+  width: 100%;
+  padding: 5rem 0rem;
+  text-align: center;
+}
+.login .login__form .loginTitle h1 {
+  color: white;
+  font-size: 2.5em;
+}
+.login .login__form .loginInput {
+  width: 90%;
+  height: 17%;
+  position: relative;
+}
+.login .login__form .loginInput input {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  height: 3em;
+  border-radius: 2em;
+  padding-left: 2em;
+  font-size: 1em;
+  background-color: rgba(25, 26, 53, 0.877);
+  color: white;
+}
+.login .login__form .loginInput input:focus + span, .login .login__form .loginInput input:not(:placeholder-shown) + span {
+  top: -1.5em;
+}
+.login .login__form .loginInput span {
+  position: absolute;
+  top: 1em;
+  left: 2em;
+  color: white;
+  transition: all 0.2s ease-in;
+}
+.login .login__form .loginButton {
+  width: 90%;
+  text-align: center;
+  background-color: wheat;
+  height: 3em;
+  border-radius: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(58, 72, 90);
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+}
+.login .login__form .loginButton:hover {
+  background-color: rgb(50, 71, 99);
+}
+.login .login__form .loginButton span {
+  color: white;
+  font-size: 1em;
+}
+.loading {
+  top: 0px;
+  left: 0px;
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+.loading img {
+  width: 5em;
+  height: 5em;
+  object-fit: cover;
+}
+.loadingacctive {
+  position: fixed;
+  display: flex;
+}
+.notification {
+  left: 0px;
+  top: 0px;
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to right top, rgba(25, 28, 43, 0.7), rgba(33, 43, 96, 0.7));
+  z-index: 100000;
+}
+.notification .notificationBox {
+  position: relative;
+  width: 30em;
+  height: 10em;
+  max-width: 400px;
+  max-height: 400px;
+  min-width: 100px;
+  min-height: 100px;
+  background-image: linear-gradient(to right top, rgb(25, 28, 43), rgb(33, 43, 96));
+  display: flex;
+  border-radius: 1.5em;
+  box-sizing: border-box;
+  border: 1px solid rgb(41, 0, 226);
+  box-shadow: 0 4px 12px rgba(0, 89, 255, 0.1);
+}
+.notification .notificationBox .boxIcon {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notification .notificationBox .boxIcon img {
+  width: 3em;
+  height: 3em;
+  object-fit: cover;
+}
+.notification .notificationBox .boxText {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.notification .notificationBox .boxText .title {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.notification .notificationBox .boxText .title p {
+  font-size: 1em;
+  color: white;
+}
+ .notification .notificationBox .boxText .content {
+  width: 100%;
+  height: 50%;
+}
+ .notification .notificationBox .boxText .content p {
+  font-size: 1em;
+  color: white;
+}
+.notification .notificationBox .boxClose {
+  position: absolute;
+  width: 1.5em;
+  height: 1.5em;
+  right: 1em;
+  top: 1em;
+}
+.notification .notificationBox .boxClose img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.notificationAcctive {
+  display: flex;
+}
+
+/*# sourceMappingURL=LoginPage.module.css.map */

@@ -1,0 +1,245 @@
+.noteMain {
+  margin-top: 5em;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 4em 2em;
+  transform-style: preserve-3d;
+  perspective: 1400px;
+}
+@media (max-width: 768px) {
+  .noteMain {
+    justify-content: center;
+    margin-left: 0px;
+  }
+}
+.noteMain .noteMain__box {
+  max-width: 500px;
+  max-height: 700px;
+  min-height: 150px;
+  min-width: 100px;
+  width: 20%;
+  height: 40%;
+  background-color: white;
+  border-radius: 1em;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .noteMain .noteMain__box {
+    width: 40%;
+    height: 30%;
+  }
+}
+.noteMain .noteMain__box .box__title {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.noteMain .noteMain__box .box__title p {
+  color: black;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.noteMain .noteMain__box .box__title span {
+  width: 80%;
+  height: 2px;
+  background-color: rgb(175, 174, 174);
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.noteMain .noteMain__box .box__content {
+  width: 90%;
+  height: 60%;
+  padding-top: 1em;
+  overflow-y: scroll;
+}
+.noteMain .noteMain__box .box__content p {
+  color: black;
+  font-size: 1em;
+}
+.noteMain .noteMain__box .box__tag {
+  width: 90%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.noteMain .noteMain__box .box__tag p {
+  color: black;
+  font-size: 0.9em;
+}
+.noteMain .noteMain__box .box__icon {
+  position: absolute;
+  width: 80%;
+  height: 2.5em;
+  top: -1em;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3em;
+  visibility: visible;
+  z-index: 10;
+}
+.noteMain .noteMain__box .box__delete {
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(215, 216, 247);
+  border-radius: 2em;
+  transition: all 0.2s ease-in;
+  transform: rotateY(-180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.noteMain .noteMain__box .box__delete p {
+  padding: 1em 3em;
+  background-color: rgb(42, 43, 71);
+  font-size: 1.3em;
+  border-radius: 2em;
+  max-width: 60%;
+}
+.noteMain .noteMain__box .box__deleteActive {
+  visibility: visible;
+}
+.noteMain .noteMain__box .box__iconcolor1 {
+  background-color: rgb(145, 122, 107);
+}
+.noteMain .noteMain__box .box__iconcolor2 {
+  background-color: rgb(254, 197, 46);
+}
+.noteMain .noteMain__box .box__iconcolor3 {
+  background-color: rgb(238, 118, 75);
+}
+.noteMain .noteMain__box .box__iconcolor4 {
+  background-color: rgb(107, 175, 88);
+}
+.noteMain .noteMain__box .box__iconcolor5 {
+  background-color: rgb(95, 189, 205);
+}
+.noteMain .noteMain__box .box__iconcolor6 {
+  background-color: rgb(60, 121, 176);
+}
+.noteMain .noteMain__box .box__iconcolor7 {
+  background-color: rgb(129, 142, 169);
+}
+.noteMain .noteMain__box .box__iconcolor8 {
+  background-color: rgb(154, 105, 171);
+}
+.noteMain .noteMain__box .box__iconcolor9 {
+  background-color: rgb(234, 38, 146);
+}
+.noteMain .noteMain__box:last-child {
+  background-color: rgba(0, 0, 0, 0.24);
+}
+.noteMain .noteMainBox__rote180 {
+  transform: rotateY(180deg);
+  background-color: rgb(215, 216, 247);
+  visibility: hidden;
+}
+.noteMain .addNote {
+  width: 50%;
+  background-color: rgb(129, 142, 169);
+  padding: 0.5em;
+  text-align: center;
+  border-radius: 2em;
+}
+.noteMain .addNote p {
+  cursor: pointer;
+  font-size: 1.3em;
+  color: rgb(255, 255, 255);
+}
+
+.inputNote {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  background-image: linear-gradient(to right top, rgba(25, 28, 43, 0.7), rgba(33, 43, 96, 0.7));
+  flex-direction: column;
+}
+.inputNote .inputNote__box {
+  width: 50%;
+  height: 70%;
+  max-width: 700px;
+  max-height: 900px;
+  min-width: 300px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(to right top, rgba(25, 28, 43, 0.9), rgba(33, 43, 96, 0.9));
+  border-radius: 2em;
+  border: 1px solid rgb(16, 1, 85);
+  box-shadow: 0 4px 12px rgba(0, 89, 255, 0.1);
+}
+@media (max-width: 876px) {
+  .inputNote .inputNote__box {
+    width: 80%;
+    height: 50%;
+  }
+}
+.inputNote .inputNote__box .box__input {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.inputNote .inputNote__box .box__input textarea {
+  width: 80%;
+  font-size: 1em;
+  box-sizing: border-box;
+  height: 8em;
+}
+.inputNote .inputNote__box .box__input input {
+  width: 80%;
+  font-size: 1em;
+  height: 3em;
+  box-sizing: border-box;
+}
+.inputNote .inputNote__box .box__button {
+  width: 80%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inputNote .inputNote__box .box__button p {
+  background-color: rgb(0, 0, 0);
+  padding: 1.3em 4em;
+  font-size: 1.2em;
+  border-radius: 3em;
+  cursor: pointer;
+}
+
+.inputNoteAcctive {
+  display: flex;
+}
+
+/*# sourceMappingURL=HomePage.module.css.map */
