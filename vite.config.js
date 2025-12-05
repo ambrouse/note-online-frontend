@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/root-project-react-deploy-github/',
+  base: '/note-online-frontend/',
 })

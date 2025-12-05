@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ambrouse/root-project-react-deploy-github",
+  "homepage": "https://ambrouse/note-online-frontend",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
