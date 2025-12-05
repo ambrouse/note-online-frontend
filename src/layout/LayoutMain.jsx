@@ -216,7 +216,7 @@ async function LoadMenu(navigate){
         }
         else{
             if(err.response.data.status==401){
-                navigate("/")
+                navigate("/login")
             }
         }
     }
