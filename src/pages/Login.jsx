@@ -37,7 +37,7 @@ export default function Login(){
                 <div className={style.loginButton}
                     onClick={()=>{
                         setLoading(true)
-                        login(name, password).then((data)=>{
+                        login(name, password, API_URL).then((data)=>{
                             setLoading(false)
                             if(!data[0]){
                                 setNotification({"status":true, "title": "Không thể đăng nhập.", "mess":data[1], "type":false})
@@ -84,7 +84,7 @@ export default function Login(){
 
 
 
-async function login(name, pass){
+async function login(name, pass, API_URL){
     try{
 
         if(name==undefined){

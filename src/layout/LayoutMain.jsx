@@ -18,7 +18,7 @@ function LayoutMain(){
 
     const onLayoutUpdate = useCallback(()=>{
         setLoading(true)
-        GetNote(nameCurrent,navigate).then((dataNote)=>{
+        GetNote(nameCurrent,navigate, API_URL).then((dataNote)=>{
             if(dataNote[0]==false){
                 setNotification({"status":true, "title":"Thông báo", "mess":dataNote[1], "type":false})
             }else{
@@ -29,11 +29,11 @@ function LayoutMain(){
     })
     useEffect(()=>{
         setLoading(true)
-        LoadMenu(navigate).then((data)=>{
+        LoadMenu(navigate, API_URL).then((data)=>{
             if(data[0]){
                 setNameMenus(data[1])
                 if(data[1].length>0){
-                    GetNote(data[1][0].name,navigate).then((dataNote)=>{
+                    GetNote(data[1][0].name,navigate, API_URL).then((dataNote)=>{
                         if(dataNote[0]==false){
                             setNotification({"status":true, "title":"Thông báo", "mess":dataNote[1], "type":false})
                         }else{
@@ -69,7 +69,7 @@ function LayoutMain(){
                                         <p
                                             onClick={()=>{
                                                 setLoading(true)
-                                                    GetNote(item.name,navigate).then((data)=>{
+                                                    GetNote(item.name,navigate, API_URL).then((data)=>{
                                                         if(data[0]==false){
                                                             setNotification({"status":true, "title":"Thông báo", "mess":data[1], "type":false})
                                                         }else{
@@ -84,13 +84,13 @@ function LayoutMain(){
                                         <p
                                             onClick={()=>{
                                                 setLoading(true)
-                                                DeleteMenu(item.name).then((data)=>{
+                                                DeleteMenu(item.name, API_URL).then((data)=>{
                                                     if(!data[0]){
                                                         setNotification({"status":true, "title":"Thông báo", "mess":data[1], "type":false})
                                                     }else{
                                                         setNameMenus(data[1])
                                                         if(data[1].length>0){
-                                                            GetNote(data[1][0].name,navigate).then((dataNote)=>{
+                                                            GetNote(data[1][0].name,navigate, API_URL).then((dataNote)=>{
                                                                 if(dataNote[0]==false){
                                                                     setNotification({"status":true, "title":"Thông báo", "mess":dataNote[1], "type":false})
                                                                 }else{
@@ -141,7 +141,7 @@ function LayoutMain(){
                             onClick={()=>{
                                 if(input.value.length){
                                     setLoading(true)
-                                    AddMenu(input.value).then((data)=>{
+                                    AddMenu(input.value, API_URL).then((data)=>{
                                         if(!data[0]){
                                             setNotification({"status":true, "title":"Thông báo", "mess":data[1], "type":false})
                                         }else{
@@ -205,7 +205,7 @@ function LayoutMain(){
 
 
 
-async function LoadMenu(navigate){
+async function LoadMenu(navigate, API_URL){
     try{
         const data = await axios.get(API_URL+"/api/v1/note-app/menu/menu",{
             withCredentials: true})    
@@ -223,7 +223,7 @@ async function LoadMenu(navigate){
 } 
 
 
-async function AddMenu(name){
+async function AddMenu(name, API_URL){
     try{
         const data = await axios.post(API_URL+"/api/v1/note-app/menu/menu",
             {"name":name},
@@ -248,7 +248,7 @@ async function AddMenu(name){
 }
 
 
-async function DeleteMenu(name){
+async function DeleteMenu(name, API_URL){
     try{
         const data = await axios.delete(API_URL+"/api/v1/note-app/menu/menu/"+name,
             {withCredentials: true})  
@@ -298,7 +298,7 @@ function SetAnimationButtonMenu(tog){
 }
 
 
-async function GetNote(name,navigate){
+async function GetNote(name,navigate, API_URL){
 
     try{
         const data = await axios.get(API_URL+"/api/v1/note-app/note/note/"+name,
