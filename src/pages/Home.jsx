@@ -173,7 +173,7 @@ async function AddNote(title, contents, tag, nameMenu, navigate){
         return [false, "Không được để trống thông tin."]
     }
     try{
-        const data = await axios.post("http://localhost:5000/api/v1/note-app/note/note",
+        const data = await axios.post("https://note-online-backend.vercel.app/api/v1/note-app/note/note",
             {
                 nameMenu:nameMenu,
                 title:title,
@@ -203,7 +203,7 @@ async function AddNote(title, contents, tag, nameMenu, navigate){
 
 async function DeleteNote(name, title){
     try{
-        const data = await axios.delete("http://localhost:5000/api/v1/note-app/note/note?nameMenu="+name+"&titleNote="+title,
+        const data = await axios.delete("https://note-online-backend.vercel.app/api/v1/note-app/note/note?nameMenu="+name+"&titleNote="+title,
             {withCredentials: true})
         return [true, "Đã xóa note."]
     }catch(err){

@@ -93,7 +93,7 @@ async function login(name, pass){
             pass = "_"
         }
 
-        let res = await axios.post("http://localhost:5000/api/v1/note-app/auth/login",
+        let res = await axios.post("https://note-online-backend.vercel.app/api/v1/note-app/auth/login",
             {
                 "name":"03d7a18a6511afb549cc1ac87c997e3ce648012c85c6a2e8dc0d2a7eb19e897c",
                 "pass":"b565f8239c8ec957cb46264002cfaf57119c8792a70d2d03df9a9d41727dd959"
