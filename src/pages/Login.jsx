@@ -9,6 +9,7 @@ export default function Login(){
     const [loading, setLoading] = useState(false)
     const [notification, setNotification] = useState({"status":false, "title":"", "mess":"", "type":true})
     const navigate = useNavigate()
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
         
     return(
         <div className={style.login}>
@@ -41,7 +42,7 @@ export default function Login(){
                             if(!data[0]){
                                 setNotification({"status":true, "title": "Không thể đăng nhập.", "mess":data[1], "type":false})
                             }else{
-                                navigate("/home")
+                                navigate("/")
                             }
                         })
                     }}
@@ -93,12 +94,10 @@ async function login(name, pass){
             pass = "_"
         }
 
-        let res = await axios.post("https://note-online-backend.vercel.app/api/v1/note-app/auth/login",
+        let res = await axios.post(API_URL+"/api/v1/note-app/auth/login",
             {
-                "name":"03d7a18a6511afb549cc1ac87c997e3ce648012c85c6a2e8dc0d2a7eb19e897c",
-                "pass":"b565f8239c8ec957cb46264002cfaf57119c8792a70d2d03df9a9d41727dd959"
-                // "name":name,
-                // "pass":pass
+                "name":name,
+                "pass":pass
             },
             {withCredentials: true,
             headers: { "Content-Type": "application/json" },})

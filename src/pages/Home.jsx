@@ -18,6 +18,7 @@ function Home(){
     let indexColor = -1
     const {name, notes, reLoad} = useOutletContext()
     const [input, setInput] = useState({"status":false, "title":"", "contents":"", "tag":""})
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
     
 
     return(
@@ -173,7 +174,7 @@ async function AddNote(title, contents, tag, nameMenu, navigate){
         return [false, "Không được để trống thông tin."]
     }
     try{
-        const data = await axios.post("https://note-online-backend.vercel.app/api/v1/note-app/note/note",
+        const data = await axios.post(API_URL+"/api/v1/note-app/note/note",
             {
                 nameMenu:nameMenu,
                 title:title,
@@ -188,7 +189,7 @@ async function AddNote(title, contents, tag, nameMenu, navigate){
         }
         else{
             if(err.response.data.status==401){
-                navigate("/")
+                navigate("/login")
             }
             if(err.response.data.status==400){
                 return [false, err.response.data.errMessage.mess]
@@ -203,7 +204,7 @@ async function AddNote(title, contents, tag, nameMenu, navigate){
 
 async function DeleteNote(name, title){
     try{
-        const data = await axios.delete("https://note-online-backend.vercel.app/api/v1/note-app/note/note?nameMenu="+name+"&titleNote="+title,
+        const data = await axios.delete(API_URL+"/api/v1/note-app/note/note?nameMenu="+name+"&titleNote="+title,
             {withCredentials: true})
         return [true, "Đã xóa note."]
     }catch(err){
@@ -212,7 +213,7 @@ async function DeleteNote(name, title){
         }
         else{
             if(err.response.data.status==401){
-                navigate("/")
+                navigate("/login")
             }
             if(err.response.data.status==400){
                 return [false, err.response.data.errMessage.mess]

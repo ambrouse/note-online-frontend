@@ -13,6 +13,7 @@ function LayoutMain(){
     const [notification, setNotification] = useState({"status":false, "title":"", "mess":"", "type":true})
     const [nameCurrent, setNameCurrent] = useState("")
     const [notes, setNotes] = useState([])
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 
     const onLayoutUpdate = useCallback(()=>{
@@ -206,7 +207,7 @@ function LayoutMain(){
 
 async function LoadMenu(navigate){
     try{
-        const data = await axios.get("https://note-online-backend.vercel.app/api/v1/note-app/menu/menu",{
+        const data = await axios.get(API_URL+"/api/v1/note-app/menu/menu",{
             withCredentials: true})    
         return [true,data.data.result.nameMenus]
     }catch(err){
@@ -224,7 +225,7 @@ async function LoadMenu(navigate){
 
 async function AddMenu(name){
     try{
-        const data = await axios.post("https://note-online-backend.vercel.app/api/v1/note-app/menu/menu",
+        const data = await axios.post(API_URL+"/api/v1/note-app/menu/menu",
             {"name":name},
             {withCredentials: true})  
 
@@ -238,7 +239,7 @@ async function AddMenu(name){
         }
         else{
             if(err.response.data.status==401){
-                navigate("/")
+                navigate("/login")
             }
         }
         return [false, "Lỗi không xác định!"]
@@ -249,7 +250,7 @@ async function AddMenu(name){
 
 async function DeleteMenu(name){
     try{
-        const data = await axios.delete("https://note-online-backend.vercel.app/api/v1/note-app/menu/menu/"+name,
+        const data = await axios.delete(API_URL+"/api/v1/note-app/menu/menu/"+name,
             {withCredentials: true})  
 
         return [true,data.data.result.nameMenus]
@@ -262,7 +263,7 @@ async function DeleteMenu(name){
         }
         else{
             if(err.response.data.status==401){
-                navigate("/")
+                navigate("/login")
             }
         }
         return [false, "Lỗi không xác định!"]
@@ -300,7 +301,7 @@ function SetAnimationButtonMenu(tog){
 async function GetNote(name,navigate){
 
     try{
-        const data = await axios.get("https://note-online-backend.vercel.app/api/v1/note-app/note/note/"+name,
+        const data = await axios.get(API_URL+"/api/v1/note-app/note/note/"+name,
             {withCredentials: true})
         
         return [true,data.data.result.data]
@@ -311,7 +312,7 @@ async function GetNote(name,navigate){
         }
         else{
             if(err.response.data.status==401){
-                navigate("/")
+                navigate("/login")
             }
         }
         return [false, "Lỗi không xác định!"]
