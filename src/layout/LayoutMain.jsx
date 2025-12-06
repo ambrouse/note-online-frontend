@@ -30,6 +30,7 @@ function LayoutMain(){
     useEffect(()=>{
         setLoading(true)
         LoadMenu(navigate, API_URL).then((data)=>{
+            console.log(data[1])
             if(data[0]){
                 setNameMenus(data[1])
                 if(data[1].length>0){
@@ -40,10 +41,11 @@ function LayoutMain(){
                             setNameCurrent(data[1][0].name)
                             setNotes(dataNote[1])
                         }
+                        setLoading(false)
                     })
                 }
-                setLoading(false)
             }else{
+                setLoading(false)
                 setNotification({"status":true, "title":"Thông báo", "mess":data[1], "type":false})
             }
         })
@@ -209,7 +211,7 @@ async function LoadMenu(navigate, API_URL){
     try{
         const data = await axios.get(API_URL+"/api/v1/note-app/menu/menu",{
             withCredentials: true})    
-        return [true,data.data.result.nameMenus]
+        return data.data.result.nameMenus
     }catch(err){
         if(err.code=="ERR_NETWORK"){
             return [false, "Server sập."]
