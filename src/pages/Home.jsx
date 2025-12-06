@@ -20,7 +20,6 @@ function Home(){
     const [input, setInput] = useState({"status":false, "title":"", "contents":"", "tag":""})
     const API_URL = import.meta.env.VITE_API_BASE_URL;
     
-
     return(
         <>
             <div className={style.noteMain}>
@@ -44,8 +43,10 @@ function Home(){
                             >
                                 <div className={style.box__title}>
                                     <p>{item.title}</p>
-                                    <span></span>
                                 </div>
+                                <span>
+                                    <span></span>
+                                </span>
                                 <div className={style.box__content}>
                                     {
                                         item.contents?.map((itemContent, indexContent)=>{
@@ -65,7 +66,7 @@ function Home(){
                                     <p
                                         onClick={()=>{
                                             setLoading(true)
-                                            DeleteNote(name, item.title, navigate).then((data)=>{
+                                            DeleteNote(name, item.title, navigate, API_URL).then((data)=>{
                                                 if(!data[0]){
                                                     setNotification({"status":false,"title":"Thông báo", "mess":data[1], "type":false})
                                                 }else{
@@ -113,7 +114,7 @@ function Home(){
                         <p
                             onClick={()=>{
                                 setLoading(true)
-                                AddNote(input.title, input.contents, input.tag, name, navigate).then((data)=>{
+                                AddNote(input.title, input.contents, input.tag, name, navigate, API_URL).then((data)=>{
                                     if(!data[0]){
                                         setNotification({"status":true,"title":"Thông báo", "mess":data[1], "type":false})
                                     }else{
@@ -169,7 +170,7 @@ function Home(){
 
 
 
-async function AddNote(title, contents, tag, nameMenu, navigate){
+async function AddNote(title, contents, tag, nameMenu, navigate, API_URL){
     if(title==""||contents==""||tag==""){
         return [false, "Không được để trống thông tin."]
     }
@@ -202,7 +203,7 @@ async function AddNote(title, contents, tag, nameMenu, navigate){
 }
 
 
-async function DeleteNote(name, title){
+async function DeleteNote(name, title, navigate, API_URL){
     try{
         const data = await axios.delete(API_URL+"/api/v1/note-app/note/note?nameMenu="+name+"&titleNote="+title,
             {withCredentials: true})

@@ -96,8 +96,10 @@ async function login(name, pass, API_URL){
 
         let res = await axios.post(API_URL+"/api/v1/note-app/auth/login",
             {
-                "name":name,
-                "pass":pass
+                // "name":name,
+                // "pass":pass
+                "name":"03d7a18a6511afb549cc1ac87c997e3ce648012c85c6a2e8dc0d2a7eb19e897c",
+    "pass":"b565f8239c8ec957cb46264002cfaf57119c8792a70d2d03df9a9d41727dd959"
             },
             {withCredentials: true,
             headers: { "Content-Type": "application/json" },})

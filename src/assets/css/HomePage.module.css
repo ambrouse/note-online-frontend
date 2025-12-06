@@ -22,6 +22,7 @@
   max-height: 700px;
   min-height: 150px;
   min-width: 100px;
+  padding-top: 2em;
   width: 20%;
   height: 40%;
   background-color: white;
@@ -42,32 +43,60 @@
   }
 }
 .noteMain .noteMain__box .box__title {
+  width: 90%;
+  height: 20%;
+  max-height: 20%;
+  position: relative;
+  padding-bottom: 1em;
+  overflow-y: scroll;
+}
+.noteMain .noteMain__box .box__title::-webkit-scrollbar {
+  width: 0.5em;
+}
+.noteMain .noteMain__box .box__title::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 10px;
+}
+.noteMain .noteMain__box .box__title::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 10px;
+}
+.noteMain .noteMain__box span{
   width: 100%;
-  height: 30%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+}
+.noteMain .noteMain__box span span{
+  width: 70%;
+  height: 2px;
+  background-color: rgb(172, 168, 168);
 }
 .noteMain .noteMain__box .box__title p {
   color: black;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 700;
-}
-.noteMain .noteMain__box .box__title span {
-  width: 80%;
-  height: 2px;
-  background-color: rgb(175, 174, 174);
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 100%;
+  width: 100%;
+  align-content: center;
 }
 .noteMain .noteMain__box .box__content {
   width: 90%;
   height: 60%;
   padding-top: 1em;
   overflow-y: scroll;
+}
+.noteMain .noteMain__box .box__content::-webkit-scrollbar {
+  width: 0.5em;
+}
+.noteMain .noteMain__box .box__content::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 10px;
+}
+.noteMain .noteMain__box .box__content::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 10px;
 }
 .noteMain .noteMain__box .box__content p {
   color: black;
